@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZUITCHINI ANALYZER Premium 4.6 — Feed Fix</title>
+<style>
+:root{--bg:#080d0b;--panel:#101a15;--panel2:#14221a;--line:#263b2d;--green:#49e58a;--yellow:#ffd54a;--muted:#9bb0a1;--red:#ff7474}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#173222 0,#080d0b 52%);color:#eef8f0;font:15px/1.45 system-ui,Arial,sans-serif;min-height:100vh}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:12px 15px;font-weight:800;background:var(--green);color:#06130a}button:disabled{opacity:.45;cursor:not-allowed}
+.wrap{max-width:1120px;margin:auto;padding:20px}.brand{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.logo{font-size:12px;color:var(--yellow);letter-spacing:2px;font-weight:900}.brand h1{font-size:clamp(23px,4vw,34px);margin:2px 0}.badge{border:1px solid #3a6148;color:var(--green);padding:7px 10px;border-radius:999px;font-size:12px;white-space:nowrap}
+.card{background:linear-gradient(145deg,#111d16,#0d1511);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 12px 32px #0003}.hidden{display:none!important}.auth{max-width:440px;margin:7vh auto}.muted{color:var(--muted)}.small{font-size:12px}.field{display:grid;gap:6px;margin:13px 0}.field label{font-size:12px;color:#b5c8ba}.field input,.field select{width:100%;padding:12px;background:#08100b;border:1px solid #304738;border-radius:10px;color:#fff;outline:none}.field input:focus,.field select:focus{border-color:var(--green)}.notice{padding:11px 13px;border-radius:11px;background:#292514;color:#ffe79a;font-size:12px;margin-top:12px}.error{color:var(--red);font-size:13px;min-height:20px}.topstats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}.stat{background:#0c1510;border:1px solid var(--line);border-radius:14px;padding:14px}.stat .label{color:var(--muted);font-size:12px}.stat .value{font-size:22px;font-weight:900;margin-top:4px}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.section-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 14px}.section-title h2{font-size:16px;margin:0}.marketrow{display:flex;gap:8px;flex-wrap:wrap}.market-select-wrap{position:relative;width:100%;max-width:100%}.market-select{appearance:none;-webkit-appearance:none;width:100%;min-width:0;background:#111d16;color:#eef8f0;border:1px solid #49e58a;border-radius:12px;padding:13px 42px 13px 13px;font-size:14px;font-weight:750;white-space:normal;outline:none}.market-select:focus{box-shadow:0 0 0 2px #49e58a33}.select-chevron{position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--green);font-size:17px}.market{flex:0 0 auto;white-space:nowrap;scroll-snap-align:start;padding:8px 11px;font-size:12px;line-height:1.2;max-width:78vw}.marketrow-scroll::-webkit-scrollbar{height:4px}.marketrow-scroll::-webkit-scrollbar-thumb{background:#355440;border-radius:99px}@media(max-width:480px){body{font-size:14px}.marketrow-scroll .market{padding:8px 10px;font-size:11px}.card{padding:14px}.section-title{gap:6px}.section-title h2{font-size:14px}.muted{font-size:12px}.notice{font-size:11px}.stat .label{font-size:11px}.stat .value{font-size:20px}}.market{background:#1a2b20;color:#cfe4d3;border:1px solid #304738;padding:10px 13px;border-radius:10px}.market.active{background:#253c28;border-color:var(--green);color:var(--green)}.signalrow{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;background:#0b130e;border:1px solid #263d2d;border-radius:15px;padding:16px}.digit{font-size:68px;font-weight:950;line-height:1;color:var(--yellow);letter-spacing:-3px}.digit-percent{font-size:19px;font-weight:850;color:var(--green);margin-top:9px;min-height:25px}.predictbtn{min-width:126px;min-height:56px}.scan-panel{margin-top:12px;padding:12px;background:#0a120d;border:1px solid #263d2d;border-radius:12px}.scan-heading{display:flex;justify-content:space-between;gap:8px;font-size:12px}.scan-heading b{color:var(--green)}#scanState{color:var(--yellow)}.scan-track{height:5px;margin:9px 0;background:#25352a;border-radius:99px;overflow:hidden}.scan-track span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--yellow),var(--green));transition:width .25s}.confidence{height:9px;background:#25352a;border-radius:99px;overflow:hidden;margin:8px 0}.confidence span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--yellow),var(--green));transition:width .3s}.tickgrid{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin:12px 0}.digitbox{background:#0a120d;border:1px solid #26392c;border-radius:8px;text-align:center;padding:8px 0}.digitbox b{display:block;font-size:17px}.digitbox small{color:var(--muted);font-size:10px}.digitbox.hot{border-color:var(--yellow);background:#282511}.history{display:flex;flex-wrap:wrap;gap:6px}.tick{padding:7px 9px;background:#1b2a20;border-radius:8px;font-weight:800}.footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:15px;color:var(--muted);font-size:12px}.adminlist{display:grid;gap:8px}.useritem{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#0b130e;padding:10px;border-radius:10px}.danger{background:#572727;color:white;padding:8px 10px}.secondary{background:#25382b;color:#dff5e5}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.link{color:var(--green);text-decoration:none;font-weight:800}.live-strip{display:none!important;margin-bottom:14px;padding:12px 16px}.live-status,.live-details{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.live-details{margin-top:8px}.live-strip b{color:#eef8f0}@media(max-width:480px){.live-strip{padding:12px}.live-status,.live-details{align-items:flex-start;flex-direction:column;gap:6px}}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.topstats{grid-template-columns:1fr 1fr}.topstats .stat:last-child{grid-column:span 2}.wrap{padding:13px}.digit{font-size:58px}.digit-percent{font-size:17px}}
+
+
+/* CYBER NEON THEME */
+:root{--bg:#050611;--panel:#0b1020;--panel2:#11182d;--line:#29345b;--green:#36f5ff;--yellow:#d58bff;--muted:#a6b4d8;--red:#ff668c}
+body{background:radial-gradient(ellipse at top,#171448 0,#070914 48%,#04050b 100%);color:#f1f4ff}
+.logo,.digit{color:var(--yellow)}
+button{background:linear-gradient(135deg,#25e8ff,#8a5cff);color:#050716;box-shadow:0 0 16px #35eaff25}
+.badge{border-color:#4c4d9a;color:var(--green)}
+.card{background:linear-gradient(145deg,#10172a,#080d19);border-color:#27345a;box-shadow:0 12px 32px #0006,0 0 18px #654bff0b}
+.field label{color:#bdc9ef}.field input,.field select{background:#080d1b;border-color:#303c67;color:#f5f7ff}
+.field input:focus,.field select:focus{border-color:var(--green)}
+.stat{background:#090e1c;border-color:#29345b}.market-select{background:#0d1427;color:#f1f4ff;border-color:var(--green)}
+.market-select:focus{box-shadow:0 0 0 2px #36f5ff33}.select-chevron{color:var(--green)}
+.market{background:#111831;color:#d7defa;border-color:#303b67}.market.active{background:#211943;border-color:var(--green);color:var(--green)}
+.signalrow,.scan-panel{background:#080d19;border-color:#29345b}
+.digit-percent,.scan-heading b{color:var(--green)}#scanState{color:var(--yellow)}
+.scan-track,.confidence{background:#202849}.scan-track span,.confidence span{background:linear-gradient(90deg,#a15cff,#36f5ff)}
+.digitbox{background:#080d19;border-color:#263354}.digitbox.hot{border-color:var(--yellow);background:#20152f}
+.notice{background:#1b1630;color:#e6c7ff}
+
+
+/* Compact payment block: restrained border and smaller typography */
+.price-card{border-color:#29345b!important;box-shadow:none}
+.price-value{font-size:19px!important;line-height:1.25}
+.pay-contact{font-size:12px;font-weight:750;color:#a6b4d8;margin:5px 0 7px}
+.pay-contact a{color:#36f5ff;text-decoration:none;white-space:nowrap}
+@media(max-width:480px){.price-value{font-size:18px!important}.pay-contact{font-size:11px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="brand"><div><div class="logo">ZUITCHINI</div><h1>ANALYZER</h1><div class="muted small">Matches-only market analysis</div></div></header>
+
+  <section id="loginView" class="card auth">
+    <div class="stat price-card" style="margin-bottom:18px">
+      <div class="label">ANALYZER ACCESS PRICE</div>
+      <div class="value price-value" style="color:var(--yellow)">$100.00</div>
+      <div class="pay-contact">YOU PAY: <a href="https://wa.me/260769331543" target="_blank" rel="noopener">+260769331543</a></div>
+      <div class="muted small">Access / booking price only — this is NOT your trading stake, account balance, or a deposit.</div>
+    </div>
+    <p class="muted">Use the account created for you by the administrator.</p>
+    <div class="field"><label>Username</label><input id="loginUser" autocomplete="username" placeholder="Enter username"></div>
+    <div class="field"><label>Password / PIN</label><input id="loginPass" type="password" autocomplete="current-password" placeholder="Enter password or PIN"></div>
+    <button id="loginBtn" style="width:100%">LOG IN</button><div id="loginError" class="error"></div>
+  </section>
+
+  <main id="appView" class="hidden">
+    <section class="card live-strip" aria-live="polite">
+      <div class="live-status">
+        <span id="connectionBadge" class="badge">○ Waiting for connection</span>
+        <span class="muted small">Feed: <b id="feedStat">Offline</b></span>
+      </div>
+      <div class="live-details">
+        <span class="muted small">Selected market: <b id="marketStat">Volatility 100 (1s) Index</b></span>
+        <span class="muted small" id="tickStat">Latest quote: waiting for live ticks…</span>
+      </div>
+    </section>
+    <div class="grid">
+      <section class="card">
+        <div class="section-title"><h2>Choose volatility</h2><span class="muted small">Swipe left/right to browse</span></div>
+        <div class="market-select-wrap">
+          <select id="marketSelect" class="market-select" aria-label="Choose volatility index">
+            <option value="1HZ100V" data-name="Volatility 100 (1s) Index" selected>Volatility 100 (1s) Index</option>
+            <option value="1HZ10V" data-name="Volatility 10 (1s) Index">Volatility 10 (1s) Index</option>
+            <option value="1HZ15V" data-name="Volatility 15 (1s) Index">Volatility 15 (1s) Index</option>
+            <option value="1HZ25V" data-name="Volatility 25 (1s) Index">Volatility 25 (1s) Index</option>
+            <option value="1HZ30V" data-name="Volatility 30 (1s) Index">Volatility 30 (1s) Index</option>
+            <option value="1HZ50V" data-name="Volatility 50 (1s) Index">Volatility 50 (1s) Index</option>
+            <option value="1HZ75V" data-name="Volatility 75 (1s) Index">Volatility 75 (1s) Index</option>
+            <option value="1HZ90V" data-name="Volatility 90 (1s) Index">Volatility 90 (1s) Index</option>
+            <option value="R_10" data-name="Volatility 10 Index">Volatility 10 Index</option>
+            <option value="R_100" data-name="Volatility 100 Index">Volatility 100 Index</option>
+            <option value="R_25" data-name="Volatility 25 Index">Volatility 25 Index</option>
+            <option value="R_50" data-name="Volatility 50 Index">Volatility 50 Index</option>
+            <option value="R_75" data-name="Volatility 75 Index">Volatility 75 Index</option>
+          </select>
+          <span class="select-chevron" aria-hidden="true">▾</span>
+        </div>
+        <div style="height:16px"></div>
+        <div class="section-title"><h2>Matches prediction</h2><span class="badge">30-second window</span></div>
+        <div class="signalrow">
+          <div><div class="muted small">PREDICTED MATCH DIGIT</div><div class="digit" id="predDigit">—</div><div class="digit-percent" id="digitPercent" aria-live="polite">—%</div></div>
+          <button id="predictBtn" class="predictbtn" disabled>PREDICT</button>
+        </div>
+        <div id="scanPanel" class="scan-panel" aria-live="polite">
+          <div class="scan-heading"><b id="scanTitle">Market scan</b><span id="scanState">Waiting for live data</span></div>
+          <div class="scan-track"><span id="scanBar"></span></div>
+          <div class="muted small" id="scanDetail">Collecting live ticks before evaluating recent digit patterns.</div>
+        </div>
+        <div style="height:15px"></div>
+        <div class="section-title"><h2>Last-digit frequency</h2><span class="muted small" id="sampleCount">0 ticks</span></div>
+        <div class="tickgrid" id="frequencyGrid"></div>
+        <div class="section-title"><h2>Recent last digits</h2><span class="muted small">Newest first</span></div>
+        <div class="history" id="history"></div>
+      </section>
+
+      <aside class="card">
+        <div class="section-title"><h2>Market insights</h2><span class="badge">Live analysis</span></div>
+        <div class="stat" style="margin-bottom:10px"><div class="label">Most frequent digit in sample</div><div class="value" id="mostFrequent">—</div><div class="muted small">Past ticks only; does not mean it will repeat.</div></div>
+        <div class="stat" style="margin-bottom:10px"><div class="label">Least frequent digit in sample</div><div class="value" id="leastFrequent">—</div><div class="muted small">A low count does not make a digit due.</div></div>
+        <div class="stat"><div class="label">Prediction expires in</div><div class="value" id="countdown">—</div><div class="muted small">30 seconds from the moment Predict is pressed.</div></div>
+        <div class="notice">Deriv market ticks can be received automatically, but this page does not place trades or synchronize a prediction directly into your bot. Entering a digit in a bot does not guarantee profit; matches contracts can lose the stake.</div>
+        <div class="footer"><span>Signed in as <b id="signedUser">—</b></span><button id="logoutBtn" class="secondary">Log out</button></div>
+      </aside>
+    </div>
+
+    <section id="adminPanel" class="card hidden" style="margin-top:14px">
+      <div class="section-title"><h2>Administrator • Account management</h2><span class="badge">Local prototype</span></div>
+      <div id="adminPinGate">
+        <p class="muted">Enter the master PIN to open the admin profile.</p>
+        <div class="row"><input id="adminPinInput" type="password" inputmode="numeric" placeholder="Master PIN" style="max-width:240px;padding:12px;background:#08100b;border:1px solid #304738;border-radius:10px;color:#fff"><button id="adminPinBtn">UNLOCK ADMIN</button></div>
+        <div id="adminPinError" class="error"></div>
+      </div>
+      <div id="adminContents" class="hidden">
+      <div class="notice">This admin panel is a local demonstration, not secure access control. Accounts are saved only in this browser/device and will NOT work for other people just because you share this HTML file. Multi-user access requires a server-side login database. Do not use the master PIN or real user passwords on a public website.</div>
+      <div class="grid" style="margin-top:12px">
+        <div>
+          <h3>Create account</h3>
+          <div class="field"><label>New username</label><input id="newUser" placeholder="Username"></div>
+          <div class="field"><label>Temporary password / PIN</label><input id="newPass" placeholder="Temporary password"></div>
+          <button id="createUserBtn">CREATE ACCOUNT</button><div id="adminMsg" class="muted small" style="margin-top:8px"></div>
+        </div>
+        <div><h3>Existing accounts</h3><div class="adminlist" id="userList"></div></div>
+      </div>
+      </div>
+    </section>
+  </main>
+</div>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const ADMIN_USER = 'ZUITCHINI';
+  // Demo-only credentials. Client-side credentials are visible to anyone inspecting this file.
+  const DEMO_ADMIN_PASSWORD = '227661';
+  const DEMO_ADMIN_PIN = '2112004';
+  const STORE = 'zuitchini_demo_users_v1';
+  const defaultUsers = () => [{username:ADMIN_USER,password:DEMO_ADMIN_PASSWORD,role:'admin'}];
+  let users;
+  try { users = JSON.parse(localStorage.getItem(STORE)) || defaultUsers(); } catch(e) { users = defaultUsers(); }
+  if (!users.some(u=>u.username===ADMIN_USER)) users.push({username:ADMIN_USER,password:DEMO_ADMIN_PASSWORD,role:'admin'});
+  const saveUsers = () => localStorage.setItem(STORE, JSON.stringify(users));
+  saveUsers();
+
+  let currentUser = null, ws = null, reconnectTimer = null, reconnectAttempts = 0, manuallyStopped = false, selectedSymbol = '1HZ100V', selectedName = 'Volatility 100 (1s) Index', feedGeneration = 0, lastTickAt = 0, pingTimer = null;
+  let scanInterval = null, scanInProgress = false, scanProgress = 0, lastScan = null;
+  let ticks = [], predictionTimer = null, countdownInterval = null, predictionExpires = 0, lastPrice = null;
+  const MAX_TICKS = 250;
+  const symbols = {'1HZ100V':'Volatility 100 (1s) Index','1HZ10V':'Volatility 10 (1s) Index','1HZ15V':'Volatility 15 (1s) Index','1HZ25V':'Volatility 25 (1s) Index','1HZ30V':'Volatility 30 (1s) Index','1HZ50V':'Volatility 50 (1s) Index','1HZ75V':'Volatility 75 (1s) Index','1HZ90V':'Volatility 90 (1s) Index',R_10:'Volatility 10 Index',R_25:'Volatility 25 Index',R_50:'Volatility 50 Index',R_75:'Volatility 75 Index',R_100:'Volatility 100 Index'};
+
+  function showLogin(){ $('loginView').classList.remove('hidden'); $('appView').classList.add('hidden'); }
+  function showApp(){ $('loginView').classList.add('hidden'); $('appView').classList.remove('hidden'); $('signedUser').textContent=currentUser.username; $('adminPanel').classList.toggle('hidden', currentUser.role!=='admin'); if(currentUser.role==='admin'){ $('adminPinGate').classList.remove('hidden'); $('adminContents').classList.add('hidden'); $('adminPinInput').value=''; $('adminPinError').textContent=''; } }
+  $('loginBtn').addEventListener('click', login);
+  $('loginPass').addEventListener('keydown', e=>{if(e.key==='Enter')login()});
+  $('loginUser').addEventListener('keydown', e=>{if(e.key==='Enter')login()});
+  function login(){
+    const username=$('loginUser').value.trim(), password=$('loginPass').value;
+    const found=users.find(u=>u.username.toLowerCase()===username.toLowerCase() && u.password===password);
+    if(!found){$('loginError').textContent='Incorrect username or password.';return;}
+    currentUser={username:found.username,role:found.role}; $('loginError').textContent=''; showApp(); connectFeed();
+    // Real notifications to an administrator require a backend/notification service.
+    if(found.role!=='admin') console.info('Demo login event:', found.username);
+  }
+  $('logoutBtn').addEventListener('click',()=>{currentUser=null; stopFeed(); showLogin();});
+  $('adminPinBtn').addEventListener('click',()=>{
+    if(!currentUser || currentUser.role!=='admin') return;
+    if($('adminPinInput').value===DEMO_ADMIN_PIN){$('adminPinGate').classList.add('hidden');$('adminContents').classList.remove('hidden');$('adminPinError').textContent='';renderUsers();}
+    else {$('adminPinError').textContent='Incorrect master PIN.';}
+  });
+  $('adminPinInput').addEventListener('keydown',e=>{if(e.key==='Enter')$('adminPinBtn').click()});
+  $('createUserBtn').addEventListener('click',()=>{
+    if(!currentUser || currentUser.role!=='admin') return;
+    const username=$('newUser').value.trim(), password=$('newPass').value;
+    if(username.length<3 || password.length<4){$('adminMsg').textContent='Use a username of at least 3 characters and password of at least 4 characters.';return;}
+    if(users.some(u=>u.username.toLowerCase()===username.toLowerCase())){$('adminMsg').textContent='That username already exists.';return;}
+    users.push({username,password,role:'user'});saveUsers();$('newUser').value='';$('newPass').value='';$('adminMsg').textContent='Account created on this device.';renderUsers();
+  });
+  function renderUsers(){
+    const list=$('userList'); list.innerHTML='';
+    users.forEach(u=>{
+      const row=document.createElement('div');row.className='useritem';
+      const label=document.createElement('span');label.textContent=u.username+(u.role==='admin'?' • admin':'');
+      row.appendChild(label);
+      if(u.role!=='admin'){
+        const del=document.createElement('button');del.className='danger';del.textContent='Delete';del.onclick=()=>{
+          if(!confirm('Delete '+u.username+' from this device?'))return;
+          users=users.filter(x=>x.username!==u.username);saveUsers();renderUsers();
+        };row.appendChild(del);
+      }
+      list.appendChild(row);
+    });
+  }
+
+  function setStatus(text, ok=false){
+    const badge=$('connectionBadge'); if(badge){badge.textContent=(ok?'● ':'○ ')+text;badge.style.color=ok?'var(--green)':'var(--yellow)';}
+    const feed=$('feedStat'); if(feed) feed.textContent=ok?'Live':'Connecting';
+  }
+  function connectFeed(){
+    manuallyStopped = false;
+    const generation = ++feedGeneration;
+    if(reconnectTimer){clearTimeout(reconnectTimer);reconnectTimer=null;}
+    if(pingTimer){clearInterval(pingTimer);pingTimer=null;}
+    if(ws){try{ws.onclose=null;ws.close()}catch(e){}ws=null;}
+    setStatus(navigator.onLine ? 'Connecting to market…' : 'Waiting for internet');
+    if(!navigator.onLine){scheduleReconnect();return;}
+    // Public, read-only market data. No account token is needed for public ticks.
+    try{
+      const socket = new WebSocket('wss://ws.derivws.com/websockets/v3?app_id=1089');
+      ws = socket;
+      const isCurrent = () => generation === feedGeneration && ws === socket;
+      socket.onopen=()=>{
+        if(!isCurrent())return;
+        reconnectAttempts=0;
+        setStatus('Connected — requesting ticks',true);
+        // Load a real recent sample first, then subscribe for live updates.
+        socket.send(JSON.stringify({ticks_history:selectedSymbol,adjust_start_time:1,count:100,end:'latest',style:'ticks'}));
+        socket.send(JSON.stringify({ticks:selectedSymbol,subscribe:1}));
+        pingTimer=setInterval(()=>{if(isCurrent() && socket.readyState===WebSocket.OPEN)socket.send(JSON.stringify({ping:1}));},30000);
+      };
+      socket.onmessage=ev=>{
+        if(!isCurrent())return;
+        let msg;try{msg=JSON.parse(ev.data)}catch(e){return;}
+        if(msg.error){
+          setStatus('Market feed error');
+          if($('scanDetail'))$('scanDetail').textContent='Deriv feed error: '+(msg.error.message||msg.error.code||'Unknown API error')+'. Try another volatility or reconnect when online.';
+          console.warn('Deriv API error:',msg.error);
+          return;
+        }
+        if(msg.msg_type==='history' && msg.history && Array.isArray(msg.history.prices)){
+          const pipSize=Number.isInteger(msg.pip_size)?msg.pip_size:2;
+          const historical=msg.history.prices.map(q=>digitFromQuote(q,pipSize)).filter(Number.isInteger);
+          // Keep newest-first order and avoid duplicating history if a late history packet arrives.
+          if(historical.length){ticks=historical.slice(-MAX_TICKS).reverse();renderAnalysis();}
+          if($('scanDetail'))$('scanDetail').textContent='Loaded '+historical.length+' recent ticks from Deriv; waiting for live updates.';
+        }
+        if(msg.tick && msg.tick.symbol===selectedSymbol){
+          const quote=msg.tick.quote;
+          const pipSize=Number.isInteger(msg.tick.pip_size)?msg.tick.pip_size:2;
+          const digit=digitFromQuote(quote,pipSize);
+          if(Number.isInteger(digit)){
+            lastPrice=Number(quote);lastTickAt=Date.now();
+            ticks.unshift(digit);if(ticks.length>MAX_TICKS)ticks.pop();renderAnalysis();
+            const formatted=Number(quote).toFixed(Math.max(0,Math.min(pipSize,8)));
+            $('tickStat').textContent='Latest quote: '+formatted+' • Last digit: '+digit;
+            setStatus('Live market feed',true);
+          }
+        }
+      };
+      socket.onerror=()=>{if(isCurrent()){setStatus('Feed connection error');if($('scanDetail'))$('scanDetail').textContent='Could not reach Deriv live data. Check internet access or try again shortly.';}};
+      socket.onclose=()=>{
+        if(!isCurrent())return;
+        if(pingTimer){clearInterval(pingTimer);pingTimer=null;}
+        $('predictBtn').disabled=true;
+        if(!manuallyStopped){setStatus('Disconnected — retrying');scheduleReconnect();}
+        else setStatus('Feed stopped');
+      };
+    }catch(e){setStatus('Feed unavailable');if($('scanDetail'))$('scanDetail').textContent='Browser could not open the market feed: '+(e.message||'connection unavailable');scheduleReconnect();}
+  }
+  function digitFromQuote(quote,pipSize){
+    const n=Number(quote);if(!Number.isFinite(n))return null;
+    const decimals=Math.max(0,Math.min(Number.isInteger(pipSize)?pipSize:2,8));
+    const formatted=n.toFixed(decimals);
+    const match=formatted.match(/(\d)$/);
+    return match?Number(match[1]):null;
+  }
+  function scheduleReconnect(){
+    if(manuallyStopped || reconnectTimer || !navigator.onLine)return;
+    reconnectAttempts++;
+    const delay=Math.min(15000,1000*Math.pow(2,Math.min(reconnectAttempts,4)));
+    reconnectTimer=setTimeout(()=>{reconnectTimer=null;connectFeed();},delay);
+  }
+  function stopFeed(){
+    manuallyStopped=true;feedGeneration++;
+    if(pingTimer){clearInterval(pingTimer);pingTimer=null;}
+    if(reconnectTimer){clearTimeout(reconnectTimer);reconnectTimer=null;}
+    if(ws){try{ws.onclose=null;ws.close()}catch(e){}ws=null;}
+    if(predictionTimer)clearTimeout(predictionTimer);
+    if(countdownInterval)clearInterval(countdownInterval);
+    $('predictBtn').disabled=true;
+  }
+  window.addEventListener('online',()=>{if(currentUser)connectFeed();});
+  window.addEventListener('offline',()=>{setStatus('No internet connection');$('predictBtn').disabled=true;});
+  $('marketSelect').addEventListener('change',e=>{
+    const option=e.target.selectedOptions[0];
+    selectedSymbol=e.target.value;selectedName=option.dataset.name||option.textContent;ticks=[];lastPrice=null;$('marketStat').textContent=selectedName;
+    $('marketStat').textContent=selectedName;$('predDigit').textContent='—';$('digitPercent').textContent='—%';$('countdown').textContent='—';
+    connectFeed();renderAnalysis();
+  });
+  function counts(){const c=Array(10).fill(0);ticks.forEach(d=>c[d]++);return c;}
+  function renderAnalysis(){
+    const c=counts(), n=ticks.length, grid=$('frequencyGrid');grid.innerHTML='';
+    const max=Math.max(1,...c);
+    c.forEach((v,d)=>{const el=document.createElement('div');el.className='digitbox';if(v===max&&n>0)el.classList.add('hot');el.innerHTML='<b>'+d+'</b><small>'+ (n?((v/n)*100).toFixed(1):'0.0')+'%</small>';grid.appendChild(el);});
+    $('sampleCount').textContent=n+' ticks';
+    $('history').innerHTML=ticks.slice(0,35).map(d=>'<span class="tick">'+d+'</span>').join('')||'<span class="muted small">Waiting for live ticks…</span>';
+    if(n){const sorted=c.map((v,d)=>({d,v})).sort((a,b)=>b.v-a.v);$('mostFrequent').textContent=sorted[0].d+' ('+sorted[0].v+' ticks)';$('leastFrequent').textContent=sorted[sorted.length-1].d+' ('+sorted[sorted.length-1].v+' ticks)';}
+    $('predictBtn').disabled=n<20 || !ws || ws.readyState!==WebSocket.OPEN || scanInProgress;
+    if(!scanInProgress && $('scanState') && n<20) setScanProgress((n/20)*100,'Collecting data',`Deep scan needs at least 20 live ticks; currently ${n}/20.`);
+  }
+  function setScanProgress(progress, state, detail){
+    const p=Math.max(0,Math.min(100,progress));
+    if($('scanBar')) $('scanBar').style.width=p+'%';
+    if($('scanState')) $('scanState').textContent=state;
+    if($('scanDetail')) $('scanDetail').textContent=detail;
+  }
+  function evaluateMarket(){
+    const n=ticks.length;
+    if(n<20){
+      lastScan=null;
+      setScanProgress(Math.min(100,(n/20)*100),'Collecting data',`Deep scan needs at least 20 live ticks; currently ${n}/20.`);
+      $('predictBtn').disabled=true;
+      return null;
+    }
+    const all=counts();
+    const recent=ticks.slice(0,20), older=ticks.slice(20,Math.min(n,150));
+    const recentCounts=Array(10).fill(0), olderCounts=Array(10).fill(0);
+    recent.forEach(d=>recentCounts[d]++);
+    older.forEach(d=>olderCounts[d]++);
+    const total=recent.length, oldTotal=older.length;
+    const recentRates=recentCounts.map(v=>v/total);
+    const expected=1/10;
+    const deviations=recentRates.map((r,d)=>({d,rate:r,count:recentCounts[d],deviation:Math.abs(r-expected),olderRate:oldTotal?olderCounts[d]/oldTotal:expected}));
+    // Ranking is descriptive only: recent sample frequency and consistency, not a claim that a digit is due.
+    deviations.sort((a,b)=>b.count-a.count || b.deviation-a.deviation);
+    const best=deviations[0];
+    const stability=oldTotal?Math.max(0,1-Math.abs(best.rate-best.olderRate)):0;
+    const sampleQuality=Math.min(1,n/150);
+    const descriptiveScore=Math.round(Math.min(99,Math.max(1,(best.rate*100)*0.65+(stability*100)*0.2+sampleQuality*15)));
+    lastScan={digit:best.d,frequency:best.rate*100,score:descriptiveScore,n,at:Date.now()};
+    setScanProgress(100,'Scan complete',`Reviewed ${n} ticks across recent and earlier samples. Top historical digit: ${best.d}; recent frequency ${(best.rate*100).toFixed(1)}%. The percentage shown is historical sample frequency, not a verified win probability or guarantee.`);
+    return lastScan;
+  }
+  function runDeepScan(){
+    if(scanInProgress)return;
+    scanInProgress=true; scanProgress=0;
+    $('predictBtn').disabled=true;
+    $('predDigit').textContent='—';
+    
+    setScanProgress(0,'Scanning…','Reviewing live tick sample, digit distribution, and recent-vs-older frequency.');
+    const started=Date.now();
+    if(scanInterval)clearInterval(scanInterval);
+    scanInterval=setInterval(()=>{
+      scanProgress=Math.min(95,((Date.now()-started)/1800)*95);
+      setScanProgress(scanProgress,'Scanning…','Reviewing live tick sample, digit distribution, and recent-vs-older frequency.');
+    },100);
+    setTimeout(()=>{
+      if(scanInterval)clearInterval(scanInterval);
+      let result=null;
+      try { result=evaluateMarket(); }
+      catch(err) { setScanProgress(0,'Scan error','The scan could not finish. Please wait for live ticks and try again.'); console.error('ZUITCHINI scan error:',err); }
+      scanInProgress=false;
+      if(result){
+        $('predDigit').textContent=result.digit;
+        if ($('scanDetail')) $('scanDetail').textContent='Scan complete for '+selectedName+'. Candidate digit is based on historical frequency, not a verified win probability.';
+        $('digitPercent').textContent=result.frequency.toFixed(1)+'%';
+        predictionExpires=Date.now()+30000;
+        if(predictionTimer)clearTimeout(predictionTimer);
+        if(countdownInterval)clearInterval(countdownInterval);
+        const update=()=>{const left=Math.max(0,predictionExpires-Date.now());$('countdown').textContent=(left/1000).toFixed(1)+'s';if(left<=0){clearInterval(countdownInterval);$('digitPercent').textContent='—%';$('countdown').textContent='Expired';}};
+        update();countdownInterval=setInterval(update,100);
+        predictionTimer=setTimeout(()=>{$('predDigit').textContent='—';$('digitPercent').textContent='—%';},30000);
+      }else{
+        $('predDigit').textContent='—';
+        $('digitPercent').textContent='—%';
+      }
+      renderAnalysis();
+    },1900);
+  }
+
+  $('predictBtn').addEventListener('click',runDeepScan);
+
+  // Feed starts after login; the browser retries after internet returns.
+  setStatus('Ready to sign in');
+})();
+</script>
+</body>
+</html>
